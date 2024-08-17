@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const CodeEditor = () => {
-  const [content, setContent] = useState('');
+const CodeEditor = (props) => {
+  const {wrap,attachcopyButton,idOfTextArea,autoFocus,placeholder,TextAreaColumns,TextAreaRows,textAreaStyle,linestyle,content, setContent,copyButtonFunction,editable}=props.textAreaProperties
+  
   const [lineNumbers, setLineNumbers] = useState(['1']);
   const textareaRef = useRef(null);
   const lineNumbersRef = useRef(null);
@@ -27,7 +28,7 @@ const CodeEditor = () => {
         id="scrollContainer"
       >
         <div
-          className="absolute top-0 left-0 h-full w-12 bg-gray-200 text-gray-600 text-right pt-4 pr-2 border-r border-gray-300 overflow-hidden"
+          className={linestyle}
           id="lineNumbers"
           ref={lineNumbersRef}
         >
@@ -38,20 +39,29 @@ const CodeEditor = () => {
           ))}
         </div>
         <textarea
-          id="codeTextArea"
-          rows={20}
-          cols={30}
-          className="flex-1 h-full bg-transparent font-mono p-4 focus:outline-none resize-none pl-16"
-          placeholder="Type your code here..."
+          id={idOfTextArea}
+          rows={TextAreaRows}
+          cols={TextAreaColumns}
+          className={textAreaStyle}
+          placeholder={placeholder}
           autoFocus={false}
-          wrap="off"
+          wrap={wrap}
           style={{ resize: 'none' }}
           value={content}
           onChange={handleContentChange}
           onScroll={onScrollHandler}
           ref={textareaRef}
+          contentEditable={editable}
         ></textarea>
       </div>
+      {attachcopyButton && (
+      <button
+        onClick={copyButtonFunction}
+        className="absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105"
+      >
+        📋
+      </button>
+    )}
     </div>
   );
 };
