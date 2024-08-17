@@ -37,6 +37,7 @@ export default function ButtierLayout() {
     autoFocus: true,
     idOfTextArea: "input",
     attachcopyButton: false,
+    wrap:"off"
   };
   const text_are_style =
     `output-area flex-1 w-full h-full pl-16 font-mono p-4 border rounded-lg shadow focus:outline-none transition-all duration-300 ` +
@@ -55,6 +56,7 @@ export default function ButtierLayout() {
     attachcopyButton: true,
     copyButtonFunction: copyToClipboard,
     error,
+    wrap:"on"
   };
 
   return (
