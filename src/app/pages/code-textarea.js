@@ -22,22 +22,22 @@ const CodeEditor = (props) => {
   };
 
   return (
-    <div className="relative flex-1 min-w-md flex h-96"> {/* Parent div with fixed height */}
+    <div className="relative flex-1 min-w-md flex h-96 md:h-96 lg:h-4/5"> {/* Parent div with fixed height */}
       <div
         className="relative flex w-full h-full overflow-auto border border-gray-300 rounded-lg"
         id="scrollContainer"
       >
-        <div
-          className={linestyle}
-          id="lineNumbers"
-          ref={lineNumbersRef}
-        >
-          {lineNumbers.map((number) => (
-            <div key={number} className="text-center leading-6">
-              {number}
-            </div>
-          ))}
+    <div
+      className={linestyle}
+      id="lineNumbers"
+      ref={lineNumbersRef}
+    >
+      {lineNumbers.map((number) => (
+        <div key={number} className="text-center leading-6">
+          {number}
         </div>
+      ))}
+    </div>
         <textarea
           id={idOfTextArea}
           rows={TextAreaRows}
