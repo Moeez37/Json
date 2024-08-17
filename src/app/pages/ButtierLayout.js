@@ -24,10 +24,13 @@ export default function ButtierLayout() {
     }
   };
 
-  const copyToClipboard = () => {
-    const outputArea = output;
-    outputArea.select();
-    document.execCommand("copy");
+  const copyToClipboard = async() => {
+    try {
+      await navigator.clipboard.writeText(output);
+    
+    } catch (err) {
+      console.error("Failed to copy text to clipboard", err);
+    }
   };
 
   const input = {
@@ -74,7 +77,7 @@ export default function ButtierLayout() {
       <CodeTextArea textAreaProperties={input} />
       <div className="flex flex-col gap-4">
         <button
-          onClick={() => jsonBeautifier(document.getElementById("input").value)}
+          onClick={() => jsonBeautifier(Content)}
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105"
         >
           Beautify
