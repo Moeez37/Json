@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 const CodeEditor = (props) => {
-  const {wrap,attachcopyButton,idOfTextArea,autoFocus,placeholder,TextAreaColumns,TextAreaRows,textAreaStyle,linestyle,content, setContent,copyButtonFunction,editable}=props.textAreaProperties
+
+  const {wrap,attachcopyButton,idOfTextArea,autoFocus,placeholder,TextAreaColumns,TextAreaRows,textAreaStyle,linestyle,content, setContent,copyButtonFunction,readonly}=props.textAreaProperties
   
   const [lineNumbers, setLineNumbers] = useState(['1']);
   const textareaRef = useRef(null);
@@ -44,14 +45,14 @@ const CodeEditor = (props) => {
           cols={TextAreaColumns}
           className={textAreaStyle}
           placeholder={placeholder}
-          autoFocus={false}
+          autoFocus={autoFocus}
           wrap={wrap}
           style={{ resize: 'none' }}
           value={content}
           onChange={handleContentChange}
           onScroll={onScrollHandler}
           ref={textareaRef}
-          contentEditable={editable}
+          readOnly={false}
         ></textarea>
       </div>
       {attachcopyButton && (
