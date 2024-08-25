@@ -1,7 +1,7 @@
 "use client"
 import Image from "next/image";
 
-import {ButtierLayout} from "./pages/ButtierLayout";
+import {ButtierLayout} from "./pages";
 
 export default function Home() {
   return (
