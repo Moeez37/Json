@@ -24,3 +24,34 @@ export const jsonBeautifier = (json,setError,setOutput) => {
       setOutput(error.message)
     }
   };
+
+  export const onKeyDownUtilityHandler = (key) => {
+      let pairCharacter = '';
+  
+      switch (key) {
+          case '`':
+              pairCharacter = '`';
+              break;
+          case "'":
+              pairCharacter = "'";
+              break;
+          case '"':
+              pairCharacter = '"';
+              break;
+          case '[':
+              pairCharacter = ']';
+              break;
+          case '{':
+              pairCharacter = '}';
+              break;
+          case '(':
+              pairCharacter = ')';
+              break;
+          default:
+              return; // Exit if the key is not one of the handled keys
+      }
+      return pairCharacter
+  };
+
+  
+  

@@ -1,3 +1,5 @@
+import { SubType, Types } from "../types/editor-types";
+import TextAreaTypes from "../types/text-area-types";
 import { copyToClipboard } from "../utils/utils";
 const basePropsOfTextArea = {
     linestyle:
@@ -50,4 +52,32 @@ export default function getPropObjectForTextArea(Type, output, setOutput, placeh
     baseTextArea["error"] = error
     baseTextArea["readonly"] = readonly
     return (baseTextArea);
+}
+
+export function getPropObjectForTextAreaWrapper(type, subtype, textAreaType,content,setcontent,error) {
+    switch (type) {
+        case Types.BEAUTIFIER: {
+
+            switch (subtype) {
+
+                case SubType.JSON_BEAUTIFIER: {
+                    if (textAreaType === TextAreaTypes.INPUT) {
+                        return getPropObjectForTextArea(TextAreaTypes.INPUT, content, setcontent, "Paste your JSON here...", error, false, true, "off", "input", false)
+                    }
+                    else if (textAreaType === TextAreaTypes.OUTPUT) {
+                        return getPropObjectForTextArea(TextAreaTypes.OUTPUT, content, setcontent, "Converted output will appear here...", error, true, true, "on", "output", true)
+                    }
+                    break;
+                }
+
+                default:{
+                    console.error("SUbtype not matched ")
+                    break;
+                }
+
+            }
+
+            break;
+        }
+    }
 }

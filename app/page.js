@@ -1,12 +1,12 @@
 "use client"
 import Image from "next/image";
 
-import {ButtierLayout} from "./pages";
+import {MainPage} from "./pages/index";
 
 export default function Home() {
   return (
     <main >
-     <ButtierLayout/>
+     <MainPage/>
     </main>
   );
 }
